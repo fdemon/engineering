@@ -1,0 +1,34 @@
+- error = @product.errors.include?(:name)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :name, :class => 'control-label'
+  .controls
+    =f.text_field :name, :class => 'input-xlarge input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:name, :class => 'text-error') : pat(:example)
+- error = @product.errors.include?(:unit_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :unit, :class => 'control-label'  
+  .controls
+  - if request.path == "/admin/products/edit"
+    =f.select(:unit_id, :collection => @units, :fields => [:name, :id], :selected => product.id) 
+  - else
+    =f.select(:unit_id, :collection => @units, :fields => [:name, :id])
+    %span.help-inline=error ? f.error_message_on(:unit_id, :class => 'text-error') : pat(:example)
+- error = @product.errors.include?(:product_type)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :product_type, :class => 'control-label'
+  .controls
+    =f.text_field :product_type, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:product_type, :class => 'text-error') : pat(:example)
+- error = @product.errors.include?(:record)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :record, :class => 'control-label'
+  .controls
+    =f.text_field :record, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:record, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:products, :index), :class => 'btn'

@@ -1,0 +1,49 @@
+- error = @order.errors.include?(:pay_date)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :pay_date, :class => 'control-label'
+  .controls
+    =f.text_field :pay_date, :class => 'input-xlarge input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:pay_date, :class => 'text-error') : pat(:example)
+- error = @order.errors.include?(:supplier_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :supplier_id, :class => 'control-label'
+  .controls
+    =f.text_field :supplier_id, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:supplier_id, :class => 'text-error') : pat(:example)
+- error = @order.errors.include?(:worker_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :worker_id, :class => 'control-label'
+  .controls
+    =f.text_field :worker_id, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:worker_id, :class => 'text-error') : pat(:example)
+- error = @order.errors.include?(:pay_type)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :pay_type, :class => 'control-label'
+  .controls
+    =f.text_field :pay_type, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:pay_type, :class => 'text-error') : pat(:example)
+- error = @order.errors.include?(:moneyofpayed)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :moneyofpayed, :class => 'control-label'
+  .controls
+    =f.text_field :moneyofpayed, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:moneyofpayed, :class => 'text-error') : pat(:example)
+- error = @order.errors.include?(:moneyofdiscount)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :moneyofdiscount, :class => 'control-label'
+  .controls
+    =f.text_field :moneyofdiscount, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:moneyofdiscount, :class => 'text-error') : pat(:example)
+- error = @order.errors.include?(:record)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :record, :class => 'control-label'
+  .controls
+    =f.text_field :record, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:record, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:orders, :index), :class => 'btn'

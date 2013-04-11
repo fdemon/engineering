@@ -1,0 +1,31 @@
+- error = @product_item.errors.include?(:product_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :product_id, :class => 'control-label'
+  .controls
+    =f.text_field :product_id, :class => 'input-xlarge input-with-feedback', :autofocus => true
+    %span.help-inline=error ? f.error_message_on(:product_id, :class => 'text-error') : pat(:example)
+- error = @product_item.errors.include?(:quantity)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :quantity, :class => 'control-label'
+  .controls
+    =f.text_field :quantity, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:quantity, :class => 'text-error') : pat(:example)
+- error = @product_item.errors.include?(:price)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :price, :class => 'control-label'
+  .controls
+    =f.text_field :price, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:price, :class => 'text-error') : pat(:example)
+- error = @product_item.errors.include?(:order_id)
+%fieldset.control-group{:class => error ? 'has-error' : ''}
+  =f.label :order_id, :class => 'control-label'
+  .controls
+    =f.text_field :order_id, :class => 'input-xlarge input-with-feedback'
+    %span.help-inline=error ? f.error_message_on(:order_id, :class => 'text-error') : pat(:example)
+
+.form-actions
+  =f.submit pat(:save), :class => 'btn btn-primary'
+  &nbsp;
+  =f.submit pat(:save_and_continue), :class => 'btn btn-info', :name => 'save_and_continue'
+  &nbsp;
+  =link_to pat(:cancel), url(:product_items, :index), :class => 'btn'
